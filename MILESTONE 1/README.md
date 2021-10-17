@@ -1,6 +1,7 @@
-# slideshow
+# Slideshow
 
-A new Flutter project.
+This is the first milestone of flutter project. It is a basic stateful layout consisting of widgets like SCAFFOLD, TEXT, BUTTON, IMAGE, ROW and COLUMN.
+
 
 ## Getting Started
 
