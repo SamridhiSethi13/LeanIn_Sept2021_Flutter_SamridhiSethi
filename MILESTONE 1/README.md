@@ -2,6 +2,8 @@
 
 This is the first milestone of flutter project. It is a basic stateful layout consisting of widgets like SCAFFOLD, TEXT, BUTTON, IMAGE, ROW and COLUMN.
 
+https://user-images.githubusercontent.com/90918405/137637446-608a64f0-a7fe-4844-bb08-a1014f3865ef.mp4
+
 
 ## Getting Started
 
