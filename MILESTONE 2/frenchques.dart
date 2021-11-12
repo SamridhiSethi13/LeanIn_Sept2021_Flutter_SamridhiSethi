@@ -2,10 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:quiz_app/result.dart';
+import 'package:flutter/rendering.dart';
 import 'result.dart';
 
 class FQuestions extends StatefulWidget {
-  const FQuestions({ Key? key }) : super(key: key);
+  const FQuestions({Key? key}) : super(key: key);
 
   @override
   _FQuestionsState createState() => _FQuestionsState();
@@ -42,13 +43,10 @@ class _FQuestionsState extends State<FQuestions> {
   int _sum = 0;
 
   void _answer(bool score) {
-    if (_index < 10)
-    {
-      if(score == _val[_index])
-      {
-          _sum += 3;
-      }
-      else{
+    if (_index < 10) {
+      if (score == _val[_index]) {
+        _sum += 3;
+      } else {
         _sum -= 1;
       }
     }
@@ -58,15 +56,41 @@ class _FQuestionsState extends State<FQuestions> {
   @override
   Widget build(BuildContext context) {
     return (_index >= 10)
-    ?Result(_sum):Padding(
-      padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 15),
-      child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(_ques[_index], style: const TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold,), textAlign: TextAlign.center,),
-        const SizedBox(height: 60.0,),
-        ElevatedButton(
-                  style: ElevatedButton.styleFrom(
+        ? Result(_sum)
+        : Scaffold(
+            appBar: AppBar(
+              centerTitle: true,
+              title: const Text(
+                "GK QUIZ",
+                style: TextStyle(
+                  fontSize: 50.0,
+                  color: Colors.pink,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              backgroundColor: Colors.cyanAccent,
+            ),
+            backgroundColor: Colors.limeAccent,
+            body: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 100, horizontal: 15),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        _ques[_index],
+                        style: const TextStyle(
+                          fontSize: 40.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(
+                        height: 60.0,
+                      ),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
                           primary: Colors.pink,
                           onPrimary: Colors.white,
                           elevation: 20.0,
@@ -74,12 +98,19 @@ class _FQuestionsState extends State<FQuestions> {
                           padding: const EdgeInsets.symmetric(
                               vertical: 15.0, horizontal: 29.0),
                         ),
-                  onPressed: () => _answer(true), 
-                  child: const Text("Vrai", style: TextStyle(fontSize: 40.0,),),
-                    ),
-        const SizedBox(height: 30.0,),
-        ElevatedButton(
-                  style: ElevatedButton.styleFrom(
+                        onPressed: () => _answer(true),
+                        child: const Text(
+                          "Vrai",
+                          style: TextStyle(
+                            fontSize: 40.0,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 30.0,
+                      ),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
                           primary: Colors.pink,
                           onPrimary: Colors.white,
                           elevation: 20.0,
@@ -87,11 +118,14 @@ class _FQuestionsState extends State<FQuestions> {
                           padding: const EdgeInsets.symmetric(
                               vertical: 15.0, horizontal: 20.0),
                         ),
-                  onPressed: () => _answer(false), 
-                  child: const Text("Faux", style: TextStyle(fontSize: 40.0,),),
-                    ),
-      ]    
-    )
-    );
+                        onPressed: () => _answer(false),
+                        child: const Text(
+                          "Faux",
+                          style: TextStyle(
+                            fontSize: 40.0,
+                          ),
+                        ),
+                      ),
+                    ])));
   }
 }
